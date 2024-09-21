@@ -33,6 +33,7 @@ class MemberController extends Controller
             "email" => $email,
             "group_id" => $request->group_id,
         ];
+        
 
         DB::beginTransaction();
         try {

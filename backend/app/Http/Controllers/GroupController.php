@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\GroupInterface;
+use App\Models\Group;
 use App\Responses\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,34 @@ class GroupController extends Controller
     {
         $this->groupInterface = $groupInterface;
     }
+
+    public function index()
+    {
+        $groups = Group::all();
+
+        return ApiResponse::sendResponse(
+            true,
+            [$groups],
+            'opération effectuée.',
+            200
+        );
+    }
+
+    public function show($id)
+    {
+        $group = Group::find($id);
+
+        return ApiResponse::sendResponse(
+            true,
+            [$group],
+            'opération effectuée.',
+            200
+        );
+    }
+
+
+
+
     public function create(Request $request)
     {
 
@@ -40,7 +69,7 @@ class GroupController extends Controller
 
             $this->groupInterface->create($data);
             DB::commit();
-            
+
             return ApiResponse::sendResponse(
                 true,
                 [],

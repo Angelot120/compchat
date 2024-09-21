@@ -34,7 +34,6 @@ function App() {
 
         toast.success("Bienvenue parmis nous " + email);
         localStorage.setItem("token", token);
-        console.log("Token stored:", response.data.token);
         setTimeout(function () {
           setLoading(false);
           navigate("/dashboard");

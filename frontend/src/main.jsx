@@ -7,6 +7,7 @@ import OtpCode from "./pages/OtpCode/OtpCode";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import Chat from "./pages/Chat/Chat.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/otp-code",
     element: <OtpCode />,
+  },
+  {
+    path: "/chat/:id",
+    element: <Chat />,
   },
   {
     path: "/dashboard",

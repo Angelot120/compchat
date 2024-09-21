@@ -22,6 +22,8 @@ Route::prefix('v1.0.0')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         // Route::get('users', [UserController::class, 'index']);
         // Route::get('logout', [AuthController::class, 'logout']);
+        Route::get('get/groups', [GroupController::class, 'index']);
+        Route::get('get/groups/{id}', [GroupController::class, 'show']);
         Route::post('create/group', [GroupController::class, 'create']);
         Route::post('create/member', [MemberController::class, 'create']);
         Route::post('send/chat', [ChatController::class, 'send']);

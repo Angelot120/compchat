@@ -28,10 +28,15 @@ class MemberRepository implements MemberInterface
 
         if (!$member) {
             $groupId = Group::find($data["group_id"]);
-            $group = $groupId->name;
-            $member = Member::create($data);
-            Mail::to($data['email'])->send(new InvitationMail($data['email'], $group));
-            return $member;
+            if ($groupId) {
+
+                $group = $groupId->name;
+                $member = Member::create($data);
+                Mail::to($data['email'])->send(new InvitationMail($data['email'], $group));
+                return $member;
+            } else {
+                return false;
+            }
         }
         return false;
     }
