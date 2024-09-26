@@ -121,7 +121,7 @@ export default function AddGroup() {
         </form>
       </dialog>
       <button type="button" onClick={openHandler}>
-        Ajouter un Goupe
+        +
       </button>
     </div>
   );

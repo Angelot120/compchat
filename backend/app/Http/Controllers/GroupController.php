@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\GroupInterface;
 use App\Models\Group;
+use App\Models\Member;
+use App\Models\User;
 use App\Responses\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +22,19 @@ class GroupController extends Controller
 
     public function index()
     {
-        $groups = Group::all();
+
+        $user = auth()->id();
+        $userMail = User::find($user)->email;
+
+        $members = Member::where("email", $userMail)->get();
+        $groupIds = $members->pluck('group_id');
+        $groups = Group::whereIn('id', $groupIds)->get();
+
+        // $groups = Group::where("user_id", $user)->get();
+
+        // foreach($members as $member){
+
+        // }
 
         return ApiResponse::sendResponse(
             true,
@@ -50,12 +64,13 @@ class GroupController extends Controller
 
         $userId = auth()->id();
 
-        if ($request->hasFile("file")) {
-            move_uploaded_file($_FILES['file']['tmp_name'], 'db/groupProfile/' . $_FILES['file']['name']);
-            $image = $_FILES['file']['name'];
+        if ($request->hasFile('image')) {
+            move_uploaded_file($_FILES['image']['tmp_name'], 'db/groupProfile/' . $_FILES['image']['name']);
+            $image = $_FILES['image']['name'];
         } else {
             $image = '';
         }
+
 
         $data = [
             "image" => $image,

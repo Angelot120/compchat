@@ -87,6 +87,8 @@ export default function AddMember(id) {
           Fermer
         </button>
 
+        <h2>Ajouter un nouveau membre</h2>
+
         <form onSubmit={handlerSubmit}>
           <Input
             value={email}
@@ -96,11 +98,12 @@ export default function AddMember(id) {
             label={"Veuillez renseigner l'email du nouveau membre à ajouter."}
           />
           {loading && <LoadingIndicator />}
+          <br />
           <Button type={"submit"} text={"Inviter"} />
         </form>
       </dialog>
       <button type="button" onClick={openHandler}>
-        Ajouter un Membre +
+        +
       </button>
     </div>
   );

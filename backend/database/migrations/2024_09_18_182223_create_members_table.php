@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string("email")->email();
-            // $table->integer("user_id")->unsigned();
+            $table->boolean("is_admin")->default(false);
             $table->integer("group_id")->unsigned();
-            // $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamps();
         });

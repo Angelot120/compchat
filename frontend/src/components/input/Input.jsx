@@ -7,6 +7,7 @@ export default function Input({
   type,
   label,
   reference,
+  className,
 }) {
   return (
     <div>
@@ -17,6 +18,7 @@ export default function Input({
         placeholder={placeholder}
         type={type}
         id={reference}
+        className={className}
       />
     </div>
   );
