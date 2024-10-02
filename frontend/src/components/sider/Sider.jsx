@@ -9,6 +9,14 @@ export default function Sider({ handleCurrentGroup }) {
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     getGroups();
+  //   }, 5000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   useEffect(() => {
     setLoading(true);
 

@@ -25,12 +25,12 @@ class AuthRepository implements AuthInterface
 
         $otp = [
             "email" => $data['email'],
-            "optCode" => Hash::make($code)
+            "otpCode" => $code
         ];
 
         OtpCode::where('email', $data['email'])->delete();
-        OtpCode::create($otp);
         User::create($data);
+        OtpCode::create($otp);
         Mail::to($data['email'])->send(new VerificationMail($data['email'], $data['name'], $code));
     }
 

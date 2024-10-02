@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('otp_codes', function (Blueprint $table) {
             $table->id();
             $table->string("email")->unique();
-            $table->string("optCode");
+            $table->string("otpCode");
             $table->timestamps();
         });
     }

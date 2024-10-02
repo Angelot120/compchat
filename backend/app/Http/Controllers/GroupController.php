@@ -64,12 +64,21 @@ class GroupController extends Controller
 
         $userId = auth()->id();
 
+        // if ($request->hasFile('image')) {
+        //     move_uploaded_file($_FILES['image']['tmp_name'], 'db/groupProfile/' . $_FILES['image']['name']);
+        //     $image = $_FILES['image']['name'];
+        // } else {
+        //     $image = '';
+        // }
+
+
         if ($request->hasFile('image')) {
             move_uploaded_file($_FILES['image']['tmp_name'], 'db/groupProfile/' . $_FILES['image']['name']);
             $image = $_FILES['image']['name'];
         } else {
             $image = '';
         }
+
 
 
         $data = [

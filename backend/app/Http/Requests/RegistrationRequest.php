@@ -27,7 +27,7 @@ class RegistrationRequest extends FormRequest
             "name" => "required|string|max:64|min:4|unique:users",
             "email" => "required|email|max:150|min:4|unique:users",
             "password" => "required|string|min:8",
-            // "passwordConfirm" => "required|same:password",
+            "passwordConfirm" => "required|same:password",
         ];
     }
 
@@ -42,7 +42,7 @@ class RegistrationRequest extends FormRequest
             'email.required' => 'Email est requise',
             'email.unique' => 'Cet email exist déjà',
             'password.required' => 'Le mot de passe est requis',
-            'passwordComfirm.same' => 'les deux mots de passe sont différent',
+            'passwordConfirm.same' => 'les deux mots de passe sont différent',
         ];
     }
 

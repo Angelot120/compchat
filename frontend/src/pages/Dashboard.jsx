@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../components/menu/Menu";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import LoadingIndicator from "../components/loading/LoadingIndicator";
 import Sider from "../components/sider/Sider";
@@ -26,10 +26,12 @@ export default function Dashboard() {
 
   if (!isValid) {
     navigate("/");
+    toast.error("Veuillez vous connecter !");
   }
 
   return (
     <div className="all-chat-session">
+      <ToastContainer />
       <Menu />
       <br />
       <div className="container">

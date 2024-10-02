@@ -24,7 +24,7 @@ class CheckOtpCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email" => "required|string|max:64|min:4|unique:users",
+            "email" => "required|string|max:64|min:4",
             "otpCode" => "required|string|max:6|min:6",
         ];
     }

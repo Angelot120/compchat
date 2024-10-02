@@ -20,7 +20,7 @@ class ChekOtpCodeController extends Controller
     {
         $data = [
             "email" => $checkOtpCodeRequest->email,
-            "optCode" => $checkOtpCodeRequest->optCode,
+            "otpCode" => $checkOtpCodeRequest->otpCode,
         ];
 
         DB::beginTransaction();

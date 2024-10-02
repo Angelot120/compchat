@@ -27,6 +27,7 @@ class AuthController extends Controller
             "name" => $registrationRequest->name,
             "password" => $registrationRequest->password,
             "phone_num" => $registrationRequest->phoneNum,
+            "passwordConfirm" => $registrationRequest->passwordConfirm,
         ];
 
         DB::beginTransaction();

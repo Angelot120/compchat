@@ -60,10 +60,11 @@ export default function Registration() {
     // setLoading(true);
     const formData = new FormData();
 
-    formData.set("name", name);
-    formData.set("email", email);
-    formData.set("password", password);
-    formData.set("passwordConfirm", passwordConfirm);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phoneNum", phone);
+    formData.append("password", password);
+    formData.append("passwordConfirm", passwordConfirm);
 
     const response = await axios.post(
       "http://127.0.0.1:8000/api/v1.0.0/register",

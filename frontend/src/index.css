@@ -29,7 +29,7 @@ body {
   display: flex;
 }
 
-.right-items img{
+.right-items img {
   margin-left: 10px;
 }
 
@@ -196,6 +196,21 @@ body {
   box-shadow: 3px 3px 3px 3px #00000039;
 }
 
+.download-btn {
+  height: 20px;
+}
+
+.chat-image {
+  height: 120px;
+  max-width: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.chat-file {
+  height: 60px;
+}
+
 .chat-form {
   display: flex;
   /* justify-content: space-around; */
@@ -215,6 +230,10 @@ body {
   box-shadow: 3px 3px 3px 3px #00000039;
 }
 
+.send-btn-img {
+  height: 20px;
+}
+
 .one-chat {
   display: flex;
   align-items: end;
@@ -223,12 +242,14 @@ body {
 .sender-chat {
   text-align: right;
   justify-content: right;
+  float: right;
 }
 
 .chat-item {
   padding: 10px;
   margin: 5px;
   border-radius: 20px 20px 20px 0;
+  /* align-items: center; */
 }
 
 .receiver-chat-item {

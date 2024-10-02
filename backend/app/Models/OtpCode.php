@@ -11,14 +11,14 @@ class OtpCode extends Model
 
     protected $fillable = [
         'email',
-        'optCode',
+        'otpCode',
     ];
 
 
     protected function casts(): array
     {
         return [
-            'code' => 'hashed',
+            'otpCode' => 'hashed',
         ];
     }
 }

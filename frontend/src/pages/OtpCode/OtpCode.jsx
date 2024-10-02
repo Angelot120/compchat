@@ -39,7 +39,7 @@ export default function OtpCode() {
         toast.success("Bienvenue parmis nous " + email);
         setTimeout(function () {
           setLoading(false);
-          navigate("/dashboard");
+          navigate("/");
         }, 3500);
       } else {
         if (response.data.status) {

@@ -19,6 +19,14 @@ export default function Chat({ group }) {
 
   // console.log(group);
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     fetchChat();
+  //   }, 500);
+
+  //   return () => clearInterval(interval);
+  // }, [group.id]);
+
   useEffect(() => {
     setLoading(true);
     const id = group.id;
@@ -183,18 +191,87 @@ export default function Chat({ group }) {
               <div className="receiver-chat">
                 <div className="one-chat">
                   <div className="chat-item receiver-chat-item">
-                    <p>{chat.chat}</p>
+                    {isFileType(chat.chat) ? (
+                      <div>
+                        <img
+                          src={getFileIcon(chat.chat)}
+                          alt="File Icon"
+                          className="chat-file"
+                        />
+                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                          {getFileName(chat.chat)}
+                        </a>
+
+                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                          <img
+                            src="/icons/download.png"
+                            alt=""
+                            className="download-btn"
+                          />
+                        </a>
+                      </div>
+                    ) : isImageType(chat.chat) ? (
+                      <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                        <img
+                          src={`http://127.0.0.1:8000/${chat.chat}`}
+                          alt="Chat Image"
+                          className="chat-image"
+                        />
+                      </a>
+                    ) : (
+                      <p>{chat.chat}</p>
+                    )}
                   </div>
                   {formatDate(chat.created_at)}
                 </div>
-                <p>{senders[index].id === chat.user_id ? senders[index].name : "Utilisateur"}</p>
+                <p>
+                  {senders[index].id === chat.user_id
+                    ? senders[index].name
+                    : "Utilisateur"}
+                </p>
               </div>
             ) : (
               <div className="sender-chat">
                 <div className="one-chat">
                   {formatDate(chat.created_at)}
                   <div className="chat-item sender-chat-item">
-                    <p>{chat.chat}</p>
+                    {isFileType(chat.chat) ? (
+                      // <a
+                      //   href={`http://127.0.0.1:8000/storage/files/${chat.chat}`}
+                      //   download
+                      // >
+                      //   {getFileType(chat.chat)}
+                      // </a>
+
+                      <div>
+                        <img
+                          src={getFileIcon(chat.chat)}
+                          alt="File Icon"
+                          className="chat-file"
+                        />
+                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                          {getFileName(chat.chat)}
+                        </a>
+
+                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                          <img
+                            src="/icons/download.png"
+                            alt=""
+                            className="download-btn"
+                          />
+                        </a>
+                      </div>
+                    ) : isImageType(chat.chat) ? (
+                      <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
+                        <img
+                          src={`http://127.0.0.1:8000/${chat.chat}`}
+                          alt="Chat Image"
+                          className="chat-image"
+                        />
+                      </a>
+                    ) : (
+                      <p>{chat.chat}</p>
+                    )}
                   </div>
                 </div>
                 <p>vous</p>
@@ -237,6 +314,60 @@ export default function Chat({ group }) {
     </div>
   );
 }
+
+const isFileType = (file) => {
+  const extension = file.split(".").pop().toLowerCase();
+  return ["pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(
+    extension
+  );
+};
+
+const isImageType = (file) => {
+  const extension = file.split(".").pop().toLowerCase();
+  return ["png", "jpg", "jpeg", "gif", "svg", "webp"].includes(extension);
+};
+
+const getFileType = (file) => {
+  const extension = file.split(".").pop().toLowerCase();
+  switch (extension) {
+    case "pdf":
+      return "Télécharger le PDF";
+    case "doc":
+    case "docx":
+      return "Télécharger le Document Word";
+    case "xls":
+    case "xlsx":
+      return "Télécharger le Document Excel";
+    case "ppt":
+    case "pptx":
+      return "Télécharger la Présentation PowerPoint";
+    default:
+      return "Fichier non pris en charge";
+  }
+};
+
+const getFileName = (file) => {
+  return file.split("/").pop();
+};
+
+const getFileIcon = (file) => {
+  const extension = file.split(".").pop().toLowerCase();
+  switch (extension) {
+    case "pdf":
+      return "../icons/pdf.png";
+    case "doc":
+    case "docx":
+      return "../icons/docx.png";
+    case "xls":
+    case "xlsx":
+      return "../icons/xlsx.png";
+    case "ppt":
+    case "pptx":
+      return "../icons/pptx.png";
+    default:
+      return "../icons/file.png";
+  }
+};
 
 // <div>
 // <div className="file-display">

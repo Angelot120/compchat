@@ -26,7 +26,7 @@ export default function AddMember(id) {
     const formData = new FormData();
 
     formData.append("email", email);
-    formData.append("group_id", id.id);
+    formData.append("groupId", id.id);
 
     // console.log("Email:", email, "Group ID:", id.id);
 
@@ -75,7 +75,7 @@ export default function AddMember(id) {
     } finally {
       setLoading(false);
     }
-
+    setEmail("");
     closeHandler();
   };
 

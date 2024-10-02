@@ -31,7 +31,7 @@ class MemberController extends Controller
         $data = [
 
             "email" => $email,
-            "group_id" => $request->group_id,
+            "group_id" => $request->groupId,
         ];
         
 

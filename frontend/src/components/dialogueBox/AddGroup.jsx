@@ -44,6 +44,7 @@ export default function AddGroup() {
 
     fromData.append("name", name);
     fromData.append("description", description);
+    console.log(profile)
     fromData.append("image", profile);
 
     try {
