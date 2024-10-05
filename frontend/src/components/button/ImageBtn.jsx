@@ -10,7 +10,7 @@ export default function ImageBtn({ text, onClick, type, disabled, className }) {
         className={className}
       >
         {/* {text || "Opérations"} */}
-        <img src={"./icons/send.png"} alt="" className="send-btn-img" />
+        <img src={"./icons/send_24dp.svg"} alt="" className="send-btn-img" />
       </button>
     </div>
   );

@@ -1,0 +1,140 @@
+:root {
+  --color1: #f5c32c;
+  --color2: #fca61f;
+  --color3: #f0f0f0;
+  --color4: #ef5757;
+}
+
+@font-face {
+  font-family: baloo;
+  src: url("../public/fonts/Baloo-Regular.ttf");
+}
+
+@font-face {
+  font-family: quicksand-bold;
+  src: url("../public/fonts/Quicksand-Bold.ttf");
+}
+
+@font-face {
+  font-family: quicksand-light;
+  src: url("../public/fonts/Quicksand-Light.ttf");
+}
+
+@font-face {
+  font-family: quicksand-medium;
+  src: url("../public/fonts/Quicksand-Medium.ttf");
+}
+
+@font-face {
+  font-family: quicksand-regular;
+  src: url("../public/fonts/Quicksand-Regular.ttf");
+}
+
+@font-face {
+  font-family: quicksand-semi-bold;
+  src: url("../public/fonts/Quicksand-SemiBold.ttf");
+}
+
+.login {
+  align-items: center;
+  background-color: var(--color3);
+  padding: 50px;
+}
+
+.login-card {
+  display: grid;
+  grid-template-columns: 1fr 0.6fr;
+  align-items: center;
+  /* border: linear-gradient(var(--color1), var(--color2), var(--color4)) solid 3px; */
+
+  border: black solid 4px;
+  border-radius: 20px;
+}
+
+.login-title {
+  font-family: baloo;
+}
+
+.login-sub-title {
+  font-family: quicksand-regular;
+}
+
+.login-input {
+  border-radius: 20px;
+  height: 35px;
+  min-width: 300px;
+  color: var(--color4);
+  margin-bottom: 15px;
+  font-family: quicksand-bold;
+}
+
+.login-btn {
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  padding: 5px 70px;
+  cursor: pointer;
+  background-color: #ef5757;
+  color: #ffffff;
+  font-family: baloo;
+}
+
+.login-left-items {
+  text-align: center;
+}
+
+.login-btn {
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  padding: 5px 70px;
+  cursor: pointer;
+  background-color: #ef5757;
+  color: #ffffff;
+  font-family: baloo;
+}
+
+.registration-link {
+  color: var(--color4);
+  font-family: baloo;
+}
+
+.registration-link a {
+  color: var(--color1);
+  text-decoration: none;
+}
+
+.login-right-items {
+  text-align: center;
+  padding: 50px;
+  background-color: #f5c32c;
+  height: 75%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 20px 20px 0px;
+}
+
+.login-right-items h2 {
+  font-family: baloo;
+}
+
+.login-right-items p {
+  font-family: quicksand-regular;
+}
+
+
+
+
+@media screen and (max-width: 740px) {
+  .login-card {
+    grid-template-columns: 1fr;
+  }
+
+  .login-right-items {
+    display: none;
+  }
+
+  .login-input{
+    min-width: 80%;
+  }
+}

@@ -4,7 +4,7 @@ import LoadingIndicator from "../loading/LoadingIndicator";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-export default function Sider({ handleCurrentGroup }) {
+export default function Sider({ handleCurrentGroup, sider }) {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -57,7 +57,7 @@ export default function Sider({ handleCurrentGroup }) {
   return (
     <div>
       <ToastContainer stacked position="bottom-left" />
-      <div className="sider">
+      <div className={sider ? "sider" : `sider-closed`}>
         <div>
           {loading && <LoadingIndicator />}
 
@@ -68,7 +68,7 @@ export default function Sider({ handleCurrentGroup }) {
               >
                 {group.image ? (
                   <img
-                    src={group.image}
+                    src={`http://127.0.0.1:8000/db/groupProfile/${group.image}`}
                     alt="image du groupe"
                     className="profile-image"
                   />

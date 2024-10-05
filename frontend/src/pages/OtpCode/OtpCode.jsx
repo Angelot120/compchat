@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import LoadingIndicator from "../../components/loading/LoadingIndicator";
+import "./otp.css";
 
 export default function OtpCode() {
   const location = useLocation();
@@ -64,30 +65,48 @@ export default function OtpCode() {
     <div>
       <ToastContainer stacked position="bottom-left" />
 
-      <h3>Confirmation l'email</h3>
-      <p>
-        Un code OTP de 6 chiffres vous a été envoyé sur {email} vérifiez votre
-        boîte mail.
-      </p>
-      <form action="" onSubmit={handleSubmit}>
-        <Input
-          label={"Code Otp"}
-          reference={"otpCode"}
-          type={"number"}
-          value={otp}
-          placeholder={"Saisir le code otp ici..."}
-          onChange={(e) => {
-            setOtp(e.target.value);
-          }}
-        />
-        {loading && <LoadingIndicator />}
-        <br />
-        <Button
-          disabled={loading}
-          type={"submit"}
-          text={loading ? "Chargement ..." : "Vérifier"}
-        />
-      </form>
+      <div className="otp">
+        <div className="otp-card">
+          <div className="otp-left-items">
+            <h2>Vérification l'email</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
+              in eligendi corporis, consequuntur perferendis animi architecto
+              quia illum facere eius ipsa aut incidunt ducimus ex delectus,
+              minus nihil quas perspiciatis!
+            </p>
+          </div>
+          <div className="otp-rigth-items">
+            <h2 className="otp-mobile-title">Vérification l'email</h2>
+            <p className="otp-sub-title">
+              Un code OTP vous a été envoyé sur {email} vérifiez votre boîte
+              mail.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <Input
+                label={""}
+                reference={"otpCode"}
+                type={"number"}
+                value={otp}
+                placeholder={" OTP code"}
+                onChange={(e) => {
+                  setOtp(e.target.value);
+                }}
+                inputClassName={"otp-input"}
+              />
+              {loading && <LoadingIndicator />}
+              <br />
+              <Button
+                disabled={loading}
+                type={"submit"}
+                text={loading ? "Chargement ..." : "Vérifier"}
+                className={"otp-btn"}
+              />
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

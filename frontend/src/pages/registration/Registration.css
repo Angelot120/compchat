@@ -1,12 +1,140 @@
+:root {
+  --color1: #f5c32c;
+  --color2: #fca61f;
+  --color3: #f0f0f0;
+  --color4: #ef5757;
+
+  /* --baloo: "../../../public/fonts/Baloo-Regular.ttf";
+  --quicksand-bold: "../../../public/fonts/Quicksand-Bold.ttf";
+  --quicksand-light: "../../../public/fonts/Quicksand-Light.ttf";
+  --quicksand-medium: "../../../public/fonts/Quicksand-Medium.ttf";
+  --quicksand-regular: "../../../public/fonts/Quicksand-Regular.ttf";
+  --quicksand-semi-bold: "../../../public/fonts/Quicksand-SemiBold.ttf"; */
+}
+
+@font-face {
+  font-family: baloo;
+  src: url("../../../public/fonts/Baloo-Regular.ttf");
+}
+
+@font-face {
+  font-family: quicksand-bold;
+  src: url("../../../public/fonts/Quicksand-Bold.ttf");
+}
+
+@font-face {
+  font-family: quicksand-light;
+  src: url("../../../public/fonts/Quicksand-Light.ttf");
+}
+
+@font-face {
+  font-family: quicksand-medium;
+  src: url("../../../public/fonts/Quicksand-Medium.ttf");
+}
+
+@font-face {
+  font-family: quicksand-regular;
+  src: url("../../../public/fonts/Quicksand-Regular.ttf");
+}
+
+@font-face {
+  font-family: quicksand-semi-bold;
+  src: url("../../../public/fonts/Quicksand-SemiBold.ttf");
+}
+
 .registration {
-  height: 100vh;
+  /* height: 100vh; */
   align-items: center;
-  background-color: aqua;
+  background-color: var(--color3);
   padding: 50px;
+  /* background-color: #ef5757; */
 }
 
 .registration-card {
   display: grid;
   grid-template-columns: 1fr 0.6fr;
   align-items: center;
+  /* border: linear-gradient(var(--color1), var(--color2), var(--color4)) solid 3px; */
+
+  border: black solid 4px;
+  border-radius: 20px;
+}
+
+.registration-left-items {
+  text-align: center;
+}
+
+.registration-title {
+  font-family: baloo;
+}
+
+.registration-sub-title {
+  font-family: quicksand-regular;
+}
+
+.registration-right-items {
+  text-align: center;
+  padding: 50px;
+  background-color: #f5c32c;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px 20px 20px 0px;
+  /* background-color: radial-gradient(
+    var(--color1),
+    var(--color2),
+    var(--color4)
+  ); */
+}
+
+.registration-right-items h2 {
+  font-family: baloo;
+}
+
+.registration-right-items p {
+  font-family: quicksand-regular;
+}
+
+.user-input {
+  border-radius: 20px;
+  height: 35px;
+  min-width: 300px;
+  color: var(--color4);
+  margin-bottom: 15px;
+  font-family: quicksand-bold;
+}
+
+.registration-btn {
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  padding: 5px 70px;
+  cursor: pointer;
+  background-color: #ef5757;
+  color: #ffffff;
+  font-family: baloo;
+}
+
+.login-link {
+  color: var(--color4);
+  font-family: baloo;
+}
+
+.login-link a {
+  color: var(--color1);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 740px) {
+  .registration-card {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-right-items {
+    display: none;
+  }
+
+  .user-input{
+    min-width: 80%;
+  }
 }

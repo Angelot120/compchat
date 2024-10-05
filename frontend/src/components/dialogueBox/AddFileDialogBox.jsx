@@ -130,14 +130,11 @@ export default function AddFileDialogBox() {
     <div className="dialogue-container">
       <ToastContainer stacked position="bottom-left" />
       <dialog ref={dialog} className="dialogue">
-        <button onClick={closeHandler} type="button">
+        <div onClick={closeHandler} className="close-btn">
           Fermer
-        </button>
+        </div>
 
-        <form onSubmit={handlerSubmit}>
-          {/* {profile && (
-            <img src={profile} alt="Uploaded" className="profile-img" />
-          )} */}
+        <form onSubmit={handlerSubmit} className="send-file-form">
           <p>Veuillez choisir un fichier.</p>
 
           <div
@@ -171,7 +168,7 @@ export default function AddFileDialogBox() {
 
           <br />
           <br />
-          <Button text={"Créer"} type={"submit"} />
+          <Button text={"Envoyer"} type={"submit"} className={"btn-primary"} />
         </form>
       </dialog>
       <div type="button" onClick={openHandler} className={"file"}>

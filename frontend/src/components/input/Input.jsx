@@ -8,17 +8,20 @@ export default function Input({
   label,
   reference,
   className,
+  inputClassName,
 }) {
   return (
-    <div>
+    <div className={className}>
       <label htmlFor={reference}>{label}</label>
+      <br />
+      <br />
       <input
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         type={type}
         id={reference}
-        className={className}
+        className={inputClassName}
       />
     </div>
   );

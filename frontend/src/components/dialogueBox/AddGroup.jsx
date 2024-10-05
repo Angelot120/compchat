@@ -12,6 +12,7 @@ export default function AddGroup() {
   const [description, setDescription] = useState("");
   const [profile, setProfile] = useState("");
   const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const openHandler = () => {
     dialog.current.showModal();
@@ -24,9 +25,10 @@ export default function AddGroup() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      setProfile(file);
       const reader = new FileReader();
       reader.onload = (event) => {
-        setProfile(event.target.result);
+        setImagePreview(event.target.result);
       };
       reader.readAsDataURL(file);
     }
@@ -44,7 +46,6 @@ export default function AddGroup() {
 
     fromData.append("name", name);
     fromData.append("description", description);
-    console.log(profile)
     fromData.append("image", profile);
 
     try {
@@ -55,6 +56,7 @@ export default function AddGroup() {
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -77,6 +79,9 @@ export default function AddGroup() {
       setLoading(false);
     }
 
+    setName("");
+    setProfile("");
+    setDescription("");
     closeHandler();
   };
 
@@ -84,11 +89,11 @@ export default function AddGroup() {
     <div className="dialogue-container">
       <ToastContainer stacked position="bottom-left" />
       <dialog ref={dialog} className="dialogue">
-        <button onClick={closeHandler} type="button">
+        <div onClick={closeHandler} className="close-btn">
           Fermer
-        </button>
+        </div>
 
-        <form onSubmit={handlerSubmit}>
+        <form onSubmit={handlerSubmit} className="create-new-group-form">
           <Input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -96,34 +101,37 @@ export default function AddGroup() {
             type={"text"}
             label={"Donnez un nom à votre groupe."}
             reference={"name"}
+            className={"form-input"}
+            inputClassName={"input"}
           />
           <br />
 
           {profile && (
-            <img src={profile} alt="Uploaded" className="profile-img" />
+            <img src={imagePreview} alt="Uploaded" className="profile-img" />
           )}
           <p>Veuillez choisir une photo de profile.</p>
           <input type="file" accept="image/*" onChange={handleFileChange} />
           <br />
           <br />
+          <p>Description du groupe : </p>
           <textarea
             className="description"
             name="description"
             id=""
-            cols="30"
-            rows="10"
+            cols="16"
+            rows="6"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
 
           {loading && <LoadingIndicator />}
 
-          <Button text={"Créer"} type={"submit"} />
+          <Button text={"Créer"} type={"submit"} className={"btn-primary"} />
         </form>
       </dialog>
-      <button type="button" onClick={openHandler}>
-        +
-      </button>
+      <div type="button" onClick={openHandler} className="add-group-btn">
+        <h2>+</h2>
+      </div>
     </div>
   );
 }

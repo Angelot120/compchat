@@ -1,7 +1,5 @@
 .dialogue {
   width: 60%;
-  /* margin-right: 10%; */
-  /* margin-left: 10%; */
   border-radius: 20px;
   border: none;
   min-height: 200px;
@@ -12,10 +10,84 @@
   width: 100%;
 }
 
+.form-input {
+  justify-content: center;
+}
+
+.close-btn {
+  cursor: pointer;
+  color: var(--last);
+  text-align: right;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background-color: var(--last);
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  font-family: baloo;
+  cursor: pointer;
+}
+
 .profile-img {
   margin-top: 20px;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.add-group-btn {
+  cursor: pointer;
+}
+
+.add-group-btn h2 {
+  padding: 0;
+  margin: 0;
+  color: var(--last);
+}
+
+.add-member-btn {
+  cursor: pointer;
+}
+
+.show-group-info {
+  cursor: pointer;
+  display: flex;
+}
+
+.create-new-group-form {
+  text-align: center;
+}
+
+/* My Profile */
+
+.show-profile-box-center-items {
+  text-align: center;
+}
+
+.logout-btn {
+  color: var(--last);
+}
+
+.header-profile {
+  cursor: pointer;
+}
+
+/* Send file */
+
+.send-file-form {
+  text-align: center;
+}
+
+.file {
+  cursor: pointer;
+  margin-right: 8px;
 }

@@ -44,7 +44,8 @@ class ChatRepository implements ChatInterface
                     try {
                         // Mail::to($receiver)->send(new testMail());
                         // Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
-                        Mail::to($receiver->email)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
+                        // Mail::to($receiver->email)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
+                        Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
 
                         // Mail::to($receiver)->send(new ChatMail("sender->email", "fileType", "sender->name", "group->name", "receiver->name"));
                     } catch (\Exception $e) {

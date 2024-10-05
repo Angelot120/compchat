@@ -102,50 +102,58 @@ export default function Registration() {
   return (
     <div className="registration">
       <div className="registration-card">
-        <div className="inputs-card" id="container">
+        <div className="inputs-card registration-left-items" id="container">
           <ToastContainer stacked position="bottom-left" />
 
-          <h1>Création de compte</h1>
+          <h1 className="registration-title">Création de compte</h1>
           <form action="" onSubmit={handleSubmit}>
-            <p>Veuillez remplir ses champs pour vous inscrire.</p>
+            <p className="registration-sub-title">
+              Veuillez vous inscrire et profitez de l’ocasion unique.
+            </p>
+
             <Input
-              label={"Nom d'utilisateur"}
-              reference={"name"}
-              type={"text"}
-              value={name}
-              placeholder={"Saisir le nom ici"}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <Input
-              label={"email"}
+              inputClassName={"user-input"}
+              label={""}
               reference={"email"}
               type={"text"}
               value={email}
-              placeholder={"Saisir l'adresse e-mail ici"}
+              placeholder={" Email"}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
             />
 
             <Input
-              label={"Numéro de téléphone"}
+              inputClassName={"user-input"}
+              label={""}
+              reference={"name"}
+              type={"text"}
+              value={name}
+              placeholder={" Nom d'utilisateur"}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+
+            <Input
+              inputClassName={"user-input"}
+              label={""}
               reference={"phone"}
               type={"number"}
               value={phone}
-              placeholder={"Saisir le numéro de téléphone ici"}
+              placeholder={" Numéro de téléphone"}
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
             />
 
             <Input
-              label={"Mot de passe"}
+              inputClassName={"user-input"}
+              label={""}
               reference={"password"}
               type={"password"}
               value={password}
-              placeholder={"Saisir le mot de passe ici"}
+              placeholder={" Mot de passe"}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -155,11 +163,12 @@ export default function Registration() {
         <div>{password}</div> */}
 
             <Input
-              label={"Confirmation"}
+              inputClassName={"user-input"}
+              label={""}
               reference={"passwordConfirm"}
               type={"password"}
               value={passwordConfirm}
-              placeholder={"Saisir le mot de passe ici"}
+              placeholder={" Confirmation de mot de passe"}
               onChange={(e) => {
                 setPasswordConfirm(e.target.value);
               }}
@@ -167,21 +176,24 @@ export default function Registration() {
 
             {loading && <LoadingIndicator />}
 
+            <br />
             <div>
               <Button
                 disabled={loading}
                 type={"submit"}
                 text={loading ? "Chargement ..." : "S'inscrire"}
+                className={"registration-btn"}
               />
               {/* <Button type={"reset"} text={"Annuler"} /> */}
             </div>
-            <div>
+            <br />
+            <div className="login-link">
               Vous avez déjà un compte ? <Link to={"/"}>Se connecter</Link>
             </div>
           </form>
         </div>
 
-        <div>
+        <div className="registration-right-items">
           <h2>Bienvenue !</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae et

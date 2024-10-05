@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\MemberInterface;
+use App\Models\Member;
 use App\Models\User;
 use App\Responses\ApiResponse;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class MemberController extends Controller
             "email" => $email,
             "group_id" => $request->groupId,
         ];
-        
+
 
         DB::beginTransaction();
         try {
@@ -59,5 +60,28 @@ class MemberController extends Controller
         } catch (\Throwable $th) {
             return ApiResponse::rollback($th);
         }
+    }
+
+
+    public function show($id)
+    {
+
+        $members = Member::where('group_id', $id)->get();
+
+        if (!$members) {
+            return ApiResponse::sendResponse(
+                false,
+                [],
+                'Impossible de récupérer les membres de ce groupe.',
+                400
+            );
+        }
+
+        return ApiResponse::sendResponse(
+            true,
+            [$members],
+            'Menbres récupéré avec succès !.',
+            200
+        );
     }
 }

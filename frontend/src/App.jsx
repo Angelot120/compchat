@@ -55,44 +55,67 @@ function App() {
   return (
     <>
       <ToastContainer stacked position="bottom-left" />
-      <h1>Connectez-vous</h1>
+      <div className="login ">
+        <div className="login-card">
+          <div className="login-left-items">
+            <h1 className="login-title">Connexion</h1>
 
-      <form onSubmit={handleSubmit}>
-        <p>
-          Veuillez Renseigner vos informations de connexion pour vous connecter.
-        </p>
-        <Input
-          label={"Email"}
-          reference={"email"}
-          type={"email"}
-          placeholder={"Saisir l'email ici..."}
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
+            <form onSubmit={handleSubmit}>
+              <p className="login-sub-title">
+                Connectez-vous et rejoignez la communautée.{" "}
+              </p>
+              <Input
+                label={""}
+                reference={"email"}
+                type={"email"}
+                placeholder={" Email"}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                inputClassName={"login-input"}
+              />
 
-        <Input
-          label={"Mot de passe"}
-          reference={"password"}
-          type={"password"}
-          placeholder={"Saisir le mot de passe ici..."}
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        {loading && <LoadingIndicator />}
-        <div>
-          <Button
-            disabled={loading}
-            type={"submit"}
-            text={loading ? "Traitement..." : "Soumettre"}
-          />
-          <br />
-          <Button type={"reset"} text={"Annuler"} />
+              <br />
+
+              <Input
+                label={""}
+                reference={"password"}
+                type={"password"}
+                placeholder={" Mot de passe"}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                inputClassName={"login-input"}
+              />
+
+              <p>Mot de passe oublié ?</p>
+              {loading && <LoadingIndicator />}
+              <div>
+                <Button
+                  disabled={loading}
+                  type={"submit"}
+                  text={loading ? "Traitement..." : "Se connecter"}
+                  className={"login-btn"}
+                />
+              </div>
+              <br />
+              <div className="registration-link">
+                Vous n’avez pas encore de compte ?{" "}
+                <Link to={"/registration"}>Créer</Link>
+              </div>
+              <br />
+            </form>
+          </div>
+
+          <div className="login-right-items">
+            <h2>Welcome back!</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
+              facilis rem nulla modi totam, ex nemo eius praesentium saepe,
+              voluptatem consequuntur sunt dolores, reprehenderit nihil non
+              asperiores accusamus vel similique?
+            </p>
+          </div>
         </div>
-
-        <div>
-          <Link to={"/registration"}>Inscription</Link>
-        </div>
-      </form>
+      </div>
     </>
   );
 }

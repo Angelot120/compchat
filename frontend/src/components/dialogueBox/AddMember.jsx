@@ -83,12 +83,11 @@ export default function AddMember(id) {
     <div className="dialogue-container">
       <ToastContainer stacked position="bottom-left" />
       <dialog ref={dialog} className="dialogue">
-        <button onClick={closeHandler} type="button">
+        <div onClick={closeHandler} className="close-btn">
           Fermer
-        </button>
+        </div>
 
         <h2>Ajouter un nouveau membre</h2>
-
         <form onSubmit={handlerSubmit}>
           <Input
             value={email}
@@ -96,15 +95,16 @@ export default function AddMember(id) {
             type={"email"}
             placeholder={"L'email du future nouveau membre ici..."}
             label={"Veuillez renseigner l'email du nouveau membre à ajouter."}
+            inputClassName={"input"}
           />
           {loading && <LoadingIndicator />}
           <br />
-          <Button type={"submit"} text={"Inviter"} />
+          <Button type={"submit"} text={"Inviter"} className={"btn-primary"} />
         </form>
       </dialog>
-      <button type="button" onClick={openHandler}>
-        +
-      </button>
+      <div className="add-member-btn" onClick={openHandler}>
+        <h2>+</h2>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Http\Resources\UserResource;
 use App\Responses\ApiResponse;
 use App\Interfaces\AuthInterface;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -87,5 +88,32 @@ class AuthController extends Controller
             DB::rollBack();
             return ApiResponse::rollback($th);
         }
+    }
+
+
+    public function showProfile()
+    {
+        $userId = auth()->id();
+
+        $user = User::find($userId);
+
+
+        if (!$user) {
+            return ApiResponse::sendResponse(
+                false,
+                [],
+                'Veullez vous connecter pour consulter votre profile.',
+                401
+            );
+        }
+
+        return ApiResponse::sendResponse(
+            true,
+            [
+                $user
+            ],
+            'Opération éffectuée effectuée.',
+            201
+        );
     }
 }
