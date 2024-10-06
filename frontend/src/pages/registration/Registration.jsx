@@ -60,11 +60,11 @@ export default function Registration() {
     // setLoading(true);
     const formData = new FormData();
 
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phoneNum", phone);
-    formData.append("password", password);
-    formData.append("passwordConfirm", passwordConfirm);
+    formData.append("name", name.trim());
+    formData.append("email", email.trim());
+    formData.append("phoneNum", phone.trim());
+    formData.append("password", password.trim());
+    formData.append("passwordConfirm", passwordConfirm.trim());
 
     const response = await axios.post(
       "http://127.0.0.1:8000/api/v1.0.0/register",
@@ -111,17 +111,19 @@ export default function Registration() {
               Veuillez vous inscrire et profitez de l’ocasion unique.
             </p>
 
-            <Input
-              inputClassName={"user-input"}
-              label={""}
-              reference={"email"}
-              type={"text"}
-              value={email}
-              placeholder={" Email"}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
+            <div className="input-container">
+              <Input
+                inputClassName={"user-input"}
+                label={""}
+                reference={"email"}
+                type={"text"}
+                value={email}
+                placeholder={" Email"}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
 
             <Input
               inputClassName={"user-input"}

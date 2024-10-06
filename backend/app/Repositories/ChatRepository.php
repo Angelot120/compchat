@@ -37,17 +37,11 @@ class ChatRepository implements ChatInterface
                 return false;
 
             foreach ($members as $member) {
-                // $receiver = User::where("id", $member->user_id)->first();
-                // $receiver = User::where("email", $member->email)->first();
                 $receiver = $member->email;
                 if ($receiver) {
                     try {
-                        // Mail::to($receiver)->send(new testMail());
-                        // Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
-                        // Mail::to($receiver->email)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
-                        Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name, $receiver->name));
 
-                        // Mail::to($receiver)->send(new ChatMail("sender->email", "fileType", "sender->name", "group->name", "receiver->name"));
+                        Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name));
                     } catch (\Exception $e) {
                         // Log::error('Mail sending failed: ' . $e->getMessage());
                         return false;

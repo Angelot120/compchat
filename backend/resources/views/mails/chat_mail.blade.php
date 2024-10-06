@@ -11,7 +11,8 @@
 <body style="font-family: Arial, sans-serif; line-height: 1.6;">
     <div style="text-align: center; padding: 20px;">
         <h3>CompChat</h3>
-        <h3>Bonjour, {{ $receiver }}</h3>
+        <h3>Bonjour,</h3>
+        <br>
         <h4>{{ $senderName }} ({{ $email }}) a envoyé fichier {{ $fileType }} dans le groupe :
             {{ $group }}. Veuillez
             accéder au

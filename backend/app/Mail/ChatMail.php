@@ -17,7 +17,7 @@ class ChatMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private $email, private $fileType, private $senderName, private $groupName, private $receiverName)
+    public function __construct(private $email, private $fileType, private $senderName, private $groupName)
     {
         //
     }
@@ -28,7 +28,7 @@ class ChatMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Un fichier' . $this->fileType . ' vous a été envoyé',
+            subject: 'Un fichier ' . $this->fileType . ' vous a été envoyé',
             from: new Address('accounts@unetah.net', 'no reply CompChat'),
         );
     }
@@ -45,7 +45,7 @@ class ChatMail extends Mailable
                 'fileType' => $this->fileType,
                 'senderName' => $this->senderName,
                 'group' => $this->groupName,
-                'receiver' => $this->receiverName,
+                // 'receiver' => $this->receiver,
             ]
         );
     }

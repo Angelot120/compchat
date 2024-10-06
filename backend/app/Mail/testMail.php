@@ -17,7 +17,7 @@ class testMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(private $email, private $name, private $fileType, private $group, private $reciverName)
     {
         //
     }
@@ -28,7 +28,7 @@ class testMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Message de test',
+            subject: 'Nouveau message',
             from: new Address('accounts@unetah.net', 'no reply CompChat'),
         );
     }
@@ -40,6 +40,13 @@ class testMail extends Mailable
     {
         return new Content(
             view: 'mails.test',
+            with: [
+                'group' => $this->group,
+                'fileType' => $this->fileType,
+                'email' => $this->email,
+                'name' => $this->name,
+                'reciverName' => $this->reciverName,
+            ]
         );
     }
 

@@ -3,6 +3,10 @@
   padding: 0;
 } */
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: quicksand-regular;
 }
@@ -268,8 +272,8 @@ body {
   align-items: center;
 }
 
-
-.chatter-name, .chatter-date{
+.chatter-name,
+.chatter-date {
   font-size: 10px;
 }
 

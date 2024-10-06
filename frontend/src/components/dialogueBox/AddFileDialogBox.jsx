@@ -102,7 +102,7 @@ export default function AddFileDialogBox() {
         );
 
         if (response.data.success) {
-          toast.success("Fichiers envoyés avec succès !");
+          // toast.success("Fichiers envoyés avec succès !");
           setTimeout(function () {
             setLoading(false);
           }, 3500);

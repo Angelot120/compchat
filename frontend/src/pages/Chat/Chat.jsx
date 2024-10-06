@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import LoadingIndicator from "../../components/loading/LoadingIndicator";
 import AddMember from "../../components/dialogueBox/AddMember";
@@ -17,6 +17,8 @@ export default function Chat({ group }) {
   const [file, setFile] = useState(null);
   const [userId, setUserId] = useState(null);
   const [senders, setSenders] = useState(null);
+
+  const lastMessageRef = useRef(null);
 
   // console.log(group);
 
@@ -68,6 +70,14 @@ export default function Chat({ group }) {
     };
     fetchChat();
   }, [group.id]);
+
+  useEffect(() => {
+    if (chats.length > 0) {
+      setTimeout(() => {
+        lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 0);
+    }
+  }, [chats]);
 
   if (!group.id) {
     return (
@@ -184,76 +194,23 @@ export default function Chat({ group }) {
 
       <div className="loading-session">{loading && <LoadingIndicator />}</div>
 
-      <div className="all-chats">
-        {chats.map((chat, index) => (
-          <div key={chat.id}>
-            {userId !== chat.user_id ? (
-              <div className="receiver-chat">
-                <div className="one-chat">
-                  <div className="chat-item receiver-chat-item">
-                    {isFileType(chat.chat) ? (
-                      <div className="chat-file">
-                        <img
-                          src={getFileIcon(chat.chat)}
-                          alt="File Icon"
-                          className="chat-file"
-                        />
-
-                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
-                          {getFileName(chat.chat)}
-                        </a>
-
-                        <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
-                          <img
-                            src="/icons/download.png"
-                            alt=""
-                            className="download-btn"
-                          />
-                        </a>
-                      </div>
-                    ) : isImageType(chat.chat) ? (
-                      <a href={`http://127.0.0.1:8000/${chat.chat}`} download>
-                        <img
-                          src={`http://127.0.0.1:8000/${chat.chat}`}
-                          alt="Chat Image"
-                          className="chat-image"
-                        />
-                      </a>
-                    ) : (
-                      <p>{chat.chat}</p>
-                    )}
-                  </div>
-                  <p className="chatter-date">{formatDate(chat.created_at)}</p>
-                </div>
-                <p className="chatter-name">
-                  {senders[index].id === chat.user_id
-                    ? senders[index].name
-                    : "Utilisateur"}
-                </p>
-              </div>
-            ) : (
-              <div className="sender-chat-all-items">
-                <div className="sender-chat">
-                  <div className="one-chat-container">
+      {chats && chats.length > 0 ? (
+        <div className="all-chats">
+          {chats.map((chat, index) => (
+            <div key={chat.id}>
+              <div>
+                {userId !== chat.user_id ? (
+                  <div className="receiver-chat">
                     <div className="one-chat">
-                      <p className="chatter-date">
-                        {formatDate(chat.created_at)}
-                      </p>
-                      <div className="chat-item sender-chat-item">
+                      <div className="chat-item receiver-chat-item">
                         {isFileType(chat.chat) ? (
-                          // <a
-                          //   href={`http://127.0.0.1:8000/storage/files/${chat.chat}`}
-                          //   download
-                          // >
-                          //   {getFileType(chat.chat)}
-                          // </a>
-
                           <div className="chat-file">
                             <img
                               src={getFileIcon(chat.chat)}
                               alt="File Icon"
                               className="chat-file"
                             />
+
                             <a
                               href={`http://127.0.0.1:8000/${chat.chat}`}
                               download
@@ -273,33 +230,112 @@ export default function Chat({ group }) {
                             </a>
                           </div>
                         ) : isImageType(chat.chat) ? (
-                          <div>
-                            <a
-                              href={`http://127.0.0.1:8000/${chat.chat}`}
-                              download
-                            >
-                              <img
-                                src={`http://127.0.0.1:8000/${chat.chat}`}
-                                alt="Chat Image"
-                                className="chat-image"
-                              />
-                            </a>
-                          </div>
+                          <a
+                            href={`http://127.0.0.1:8000/${chat.chat}`}
+                            download
+                          >
+                            <img
+                              src={`http://127.0.0.1:8000/${chat.chat}`}
+                              alt="Chat Image"
+                              className="chat-image"
+                            />
+                          </a>
                         ) : (
-                          <div>
-                            <p>{chat.chat}</p>
-                          </div>
+                          <p>{chat.chat}</p>
                         )}
                       </div>
+                      <p className="chatter-date">
+                        {formatDate(chat.created_at)}
+                      </p>
                     </div>
+                    <p className="chatter-name">
+                      {senders[index].id === chat.user_id
+                        ? senders[index].name
+                        : "Utilisateur"}
+                    </p>
                   </div>
-                </div>
-                <p className="chatter-name you">vous</p>
+                ) : (
+                  <div className="sender-chat-all-items">
+                    <div className="sender-chat">
+                      <div className="one-chat-container">
+                        <div className="one-chat">
+                          <p className="chatter-date">
+                            {formatDate(chat.created_at)}
+                          </p>
+                          <div className="chat-item sender-chat-item">
+                            {isFileType(chat.chat) ? (
+                              // <a
+                              //   href={`http://127.0.0.1:8000/storage/files/${chat.chat}`}
+                              //   download
+                              // >
+                              //   {getFileType(chat.chat)}
+                              // </a>
+
+                              <div className="chat-file">
+                                <img
+                                  src={getFileIcon(chat.chat)}
+                                  alt="File Icon"
+                                  className="chat-file"
+                                />
+                                <a
+                                  href={`http://127.0.0.1:8000/${chat.chat}`}
+                                  download
+                                >
+                                  {getFileName(chat.chat)}
+                                </a>
+
+                                <a
+                                  href={`http://127.0.0.1:8000/${chat.chat}`}
+                                  download
+                                >
+                                  <img
+                                    src="/icons/download.png"
+                                    alt=""
+                                    className="download-btn"
+                                  />
+                                </a>
+                              </div>
+                            ) : isImageType(chat.chat) ? (
+                              <div>
+                                <a
+                                  href={`http://127.0.0.1:8000/${chat.chat}`}
+                                  download
+                                >
+                                  <img
+                                    src={`http://127.0.0.1:8000/${chat.chat}`}
+                                    alt="Chat Image"
+                                    className="chat-image"
+                                  />
+                                </a>
+                              </div>
+                            ) : (
+                              <div>
+                                <p>{chat.chat}</p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="chatter-name you">vous</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+              {index === chats.length - 1 && <div ref={lastMessageRef} />}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div style={{ textAlign: "center" }}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <p>
+            Aucun message, veuillez écrire coucou pour commencer la discission.
+          </p>
+        </div>
+      )}
 
       <br />
       <br />

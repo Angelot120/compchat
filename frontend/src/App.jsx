@@ -20,8 +20,8 @@ function App() {
     setLoading(true);
 
     const fromData = new FormData();
-    fromData.append("email", email);
-    fromData.append("password", password);
+    fromData.append("email", email.trim());
+    fromData.append("password", password.trim());
 
     try {
       const response = await axios.post(
