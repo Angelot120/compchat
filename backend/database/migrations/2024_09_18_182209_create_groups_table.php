@@ -20,6 +20,22 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
+
+        // For mysql
+
+        /*
+
+        Schema::create('groups', function (Blueprint $table) {
+            $table->id();
+            $table->string('image')->nullable();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');  // clé étrangère sur users
+            $table->timestamps();
+        });
+
+        */
     }
 
     /**

@@ -19,6 +19,23 @@ return new class extends Migration
             $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamps();
         });
+
+
+        // For mySQL
+
+
+        /*
+
+            Schema::create('members', function (Blueprint $table) {
+            $table->id();
+            $table->string("email");
+            $table->boolean("is_admin")->default(false);
+            $table->unsignedBigInteger("group_id");
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->timestamps();
+        });
+
+        */
     }
 
     /**

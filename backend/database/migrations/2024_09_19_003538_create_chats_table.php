@@ -20,6 +20,22 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
+        // For mysql
+
+        /*
+
+            Schema::create('chats', function (Blueprint $table) {
+            $table->id();
+            $table->text("chat");
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
+        });
+
+        */
     }
 
     /**
