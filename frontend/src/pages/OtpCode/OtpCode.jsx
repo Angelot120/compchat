@@ -68,13 +68,15 @@ export default function OtpCode() {
       <div className="otp">
         <div className="otp-card">
           <div className="otp-left-items">
-            <h2>Vérification l'email</h2>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
-              in eligendi corporis, consequuntur perferendis animi architecto
-              quia illum facere eius ipsa aut incidunt ducimus ex delectus,
-              minus nihil quas perspiciatis!
-            </p>
+            <div>
+              <h2>Vérification l'email</h2>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Eveniet in eligendi corporis, consequuntur perferendis animi
+                architecto quia illum facere eius ipsa aut incidunt ducimus ex
+                delectus, minus nihil quas perspiciatis!
+              </p>
+            </div>
           </div>
           <div className="otp-rigth-items">
             <h2 className="otp-mobile-title">Vérification l'email</h2>

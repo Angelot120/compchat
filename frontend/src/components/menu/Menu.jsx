@@ -3,7 +3,7 @@ import AddGroup from "../dialogueBox/AddGroup";
 import Profile from "../dialogueBox/Profile";
 import axios from "axios";
 
-export default function Menu({ getSiderState }) {
+export default function Menu({ getGroups, getSiderState }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -23,7 +23,7 @@ export default function Menu({ getSiderState }) {
 
           <li>
             <div className="right-items">
-              <AddGroup />
+              <AddGroup getGroups={getGroups} />
               <Profile />
             </div>
           </li>

@@ -196,13 +196,15 @@ export default function Registration() {
         </div>
 
         <div className="registration-right-items">
-          <h2>Bienvenue !</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae et
-            perferendis autem nobis dolore quas aut quaerat, in ipsam dolorum
-            adipisci repellat excepturi quam accusantium! Deserunt totam porro
-            repellat minus?
-          </p>
+          <div>
+            <h2>Bienvenue !</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae et
+              perferendis autem nobis dolore quas aut quaerat, in ipsam dolorum
+              adipisci repellat excepturi quam accusantium! Deserunt totam porro
+              repellat minus?
+            </p>
+          </div>
         </div>
       </div>
     </div>

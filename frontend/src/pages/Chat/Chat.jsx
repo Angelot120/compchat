@@ -7,7 +7,7 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import AddFileDialogBox from "../../components/dialogueBox/AddFileDialogBox";
 import ImageBtn from "../../components/button/ImageBtn";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import ShowGroupInfo from "../../components/dialogueBox/ShowGroupInfo";
 
 export default function Chat({ group }) {
@@ -30,45 +30,45 @@ export default function Chat({ group }) {
   //   return () => clearInterval(interval);
   // }, [group.id]);
 
+  const fetchChat = (id) => {
+    if (id) {
+      try {
+        axios
+          .get(`http://127.0.0.1:8000/api/v1.0.0/get/chat/${id}`, {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          })
+          .then((res) => {
+            setChats(res.data.data.chats);
+            console.log(res.data.data.chats);
+            setSenders(res.data.data.senders);
+            console.log(res.data.data.senders);
+            setUserId(res.data.data.userId);
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            toast.error(
+              "Une erreur est survenue lors du chargement des données !"
+            );
+          });
+      } catch (err) {
+        console.error(err);
+        toast.error("Une erreur est survenue lors du chargement des données !");
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     setLoading(true);
     const id = group.id;
-    const fetchChat = () => {
-      if (id) {
-        try {
-          axios
-            .get(`http://127.0.0.1:8000/api/v1.0.0/get/chat/${id}`, {
-              headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-              },
-            })
-            .then((res) => {
-              setChats(res.data.data.chats);
-              console.log(res.data.data.chats);
-              setSenders(res.data.data.senders);
-              console.log(res.data.data.senders);
-              setUserId(res.data.data.userId);
-              setLoading(false);
-            })
-            .catch((err) => {
-              console.log(err);
-              toast.error(
-                "Une erreur est survenue lors du chargement des données !"
-              );
-            });
-        } catch (err) {
-          console.error(err);
-          toast.error(
-            "Une erreur est survenue lors du chargement des données !"
-          );
-        } finally {
-          setLoading(false);
-        }
-      } else {
-        setLoading(false);
-      }
-    };
-    fetchChat();
+
+    fetchChat(id);
   }, [group.id]);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function Chat({ group }) {
     setLoading(true);
 
     if (!message) {
-      toast.error("Veuillez renter un message !");
+      // toast.error("Veuillez renter un message !");
       return;
     }
 
@@ -118,7 +118,7 @@ export default function Chat({ group }) {
       setMessage("");
 
       if (sentMsg.data.success) {
-        toast.success("Le message a été envoyé avec succès !");
+        // toast.success("Le message a été envoyé avec succès !");
         setTimeout(function () {
           setLoading(false);
         }, 3500);
@@ -134,6 +134,7 @@ export default function Chat({ group }) {
     } finally {
       setLoading(false);
     }
+    fetchChat(group.id);
   };
 
   // if (loading) {
@@ -177,7 +178,12 @@ export default function Chat({ group }) {
 
   return (
     <div>
-      <ToastContainer stacked position="bottom-left" />
+      {/* <ToastContainer position="bottom-left" /> */}
+      {/* <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+      /> */}
 
       <div className="group-all-info">
         <div className="group-profile">

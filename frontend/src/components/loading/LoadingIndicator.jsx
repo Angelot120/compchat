@@ -10,8 +10,10 @@ export default function LoadingIndicator() {
     //   <div className="dot"></div>
     // </div>
     // </div>
-    <div className="loading-container">
-      <div className="loader"></div>
+    <div className="loading-session">
+      <div className="loading-container">
+        <div className="loader"></div>
+      </div>
     </div>
   );
 }

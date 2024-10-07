@@ -106,13 +106,15 @@ function App() {
           </div>
 
           <div className="login-right-items">
-            <h2>Welcome back!</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
-              facilis rem nulla modi totam, ex nemo eius praesentium saepe,
-              voluptatem consequuntur sunt dolores, reprehenderit nihil non
-              asperiores accusamus vel similique?
-            </p>
+            <div>
+              <h2>Welcome back!</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque
+                facilis rem nulla modi totam, ex nemo eius praesentium saepe,
+                voluptatem consequuntur sunt dolores, reprehenderit nihil non
+                asperiores accusamus vel similique?
+              </p>
+            </div>
           </div>
         </div>
       </div>

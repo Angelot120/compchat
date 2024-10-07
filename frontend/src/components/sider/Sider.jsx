@@ -17,9 +17,7 @@ export default function Sider({ handleCurrentGroup, sider }) {
   //   return () => clearInterval(interval);
   // }, []);
 
-  useEffect(() => {
-    setLoading(true);
-
+  const fechData = () => {
     axios
       .get("http://127.0.0.1:8000/api/v1.0.0/get/groups", {
         headers: {
@@ -35,6 +33,11 @@ export default function Sider({ handleCurrentGroup, sider }) {
         console.log(err);
         toast.error("Une erreur est survenue lors du chargement des données !");
       });
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    fechData();
   }, []);
 
   const handleShow = (e, group, id) => {

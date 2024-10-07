@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import LoadingIndicator from "../loading/LoadingIndicator";
 import axios from "axios";
 
-export default function AddGroup() {
+export default function AddGroup({ getGroups }) {
   const dialog = useRef();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -82,6 +82,7 @@ export default function AddGroup() {
     setName("");
     setProfile("");
     setDescription("");
+    getGroups();
     closeHandler();
   };
 

@@ -32,10 +32,28 @@ export default function Dashboard() {
     toast.error("Veuillez vous connecter !");
   }
 
+  const fechData = () => {
+    axios
+      .get("http://127.0.0.1:8000/api/v1.0.0/get/groups", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setGroups(res.data.data[0]);
+        setLoading(false);
+        console.log(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Une erreur est survenue lors du chargement des données !");
+      });
+  };
+
   return (
     <div className="all-chat-session">
       <ToastContainer />
-      <Menu getSiderState={getSiderState} />
+      <Menu getGroups={fechData} getSiderState={getSiderState} />
       <br />
       <div className="container">
         <Sider handleCurrentGroup={handleCurrentGroup} sider={isSiderVisible} />
