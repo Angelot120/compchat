@@ -1,0 +1,28 @@
+.dashboard-modern {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chat-empty-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-secondary);
+}
+
+.chat-empty-state .empty-state {
+  max-width: 400px;
+}
+
+.chat-empty-state .empty-state h3 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+.chat-empty-state .empty-state p {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}

@@ -1,0 +1,127 @@
+/* Skeleton de base */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary) 0%,
+    var(--color-bg-tertiary) 50%,
+    var(--color-bg-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Variants */
+.skeleton-circular {
+  border-radius: 50%;
+}
+
+.skeleton-rectangular {
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 12px;
+  margin-bottom: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text-last {
+  width: 60% !important;
+}
+
+.skeleton-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Skeleton pour les groupes dans la sidebar */
+.skeleton-group-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-group-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.skeleton-groups-list {
+  padding: var(--spacing-sm);
+}
+
+/* Skeleton pour les messages */
+.skeleton-message {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: 0 var(--spacing-md);
+}
+
+.skeleton-message-sent {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+.skeleton-message-received {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.skeleton-message-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  max-width: 70%;
+}
+
+.skeleton-messages-list {
+  padding: var(--spacing-md) 0;
+}
+
+/* Skeleton pour les membres */
+.skeleton-member-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-xs);
+}
+
+.skeleton-member-item-content {
+  flex: 1;
+}
+
+.skeleton-members-list {
+  padding: var(--spacing-sm) 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skeleton-group-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .skeleton-message {
+    padding: 0 var(--spacing-sm);
+  }
+}

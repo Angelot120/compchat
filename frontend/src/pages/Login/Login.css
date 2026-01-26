@@ -1,0 +1,200 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  padding: var(--spacing-lg);
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.login-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl);
+  background-color: var(--color-bg-primary);
+}
+
+.login-content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
+
+.login-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.login-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: calc(var(--spacing-sm) * -1);
+}
+
+.forgot-password-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.forgot-password-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.login-loading {
+  display: flex;
+  justify-content: center;
+  margin: var(--spacing-md) 0;
+}
+
+.login-submit-btn {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: var(--spacing-md);
+}
+
+.login-footer-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.login-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: color var(--transition-fast);
+}
+
+.login-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.login-right {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl);
+  color: var(--color-text-inverse);
+}
+
+.login-illustration {
+  width: 100%;
+  max-width: 500px;
+}
+
+.illustration-content h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-inverse);
+}
+
+.illustration-content > p {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-2xl);
+  opacity: 0.95;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-base);
+  opacity: 0.9;
+}
+
+.feature-icon {
+  font-size: var(--font-size-2xl);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .login-right {
+    display: none;
+  }
+
+  .login-left {
+    padding: var(--spacing-2xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .login-page {
+    padding: var(--spacing-md);
+  }
+
+  .login-container {
+    border-radius: var(--radius-lg);
+  }
+
+  .login-left {
+    padding: var(--spacing-xl);
+  }
+
+  .login-title {
+    font-size: var(--font-size-3xl);
+  }
+}

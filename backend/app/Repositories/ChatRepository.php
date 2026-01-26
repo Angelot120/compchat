@@ -33,22 +33,36 @@ class ChatRepository implements ChatInterface
 
             $group = Group::find($data['group_id']);
 
-            if (!$sender || !$members->isNotEmpty() || !$group)
-                return false;
+            // Ne pas bloquer l'upload si les données sont manquantes, mais loguer l'erreur
+            if (!$sender || !$members->isNotEmpty() || !$group) {
+                \Log::warning('Cannot send email notification: missing sender, members, or group', [
+                    'user_id' => $data['user_id'],
+                    'group_id' => $data['group_id'],
+                    'has_sender' => !!$sender,
+                    'has_members' => $members->isNotEmpty(),
+                    'has_group' => !!$group
+                ]);
+                // Retourner le chat créé même si l'email ne peut pas être envoyé
+                return $chat;
+            }
 
             foreach ($members as $member) {
                 $receiver = $member->email;
                 if ($receiver) {
                     try {
-
                         Mail::to($receiver)->send(new ChatMail($sender->email, $fileType, $sender->name, $group->name));
                     } catch (\Exception $e) {
-                        // Log::error('Mail sending failed: ' . $e->getMessage());
-                        return false;
+                        // Logger l'erreur mais ne pas bloquer l'upload
+                        \Log::error('Mail sending failed: ' . $e->getMessage(), [
+                            'receiver' => $receiver,
+                            'sender' => $sender->email,
+                            'group_id' => $data['group_id']
+                        ]);
+                        // Continuer avec les autres membres même si un email échoue
                     }
                 } else {
-                    Log::warning('Receiver not found for member email: ' . $member->email);
-                    return false;
+                    \Log::warning('Receiver not found for member email: ' . $member->email);
+                    // Continuer avec les autres membres
                 }
             }
         }
